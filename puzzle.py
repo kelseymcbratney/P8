@@ -8,6 +8,10 @@ class Puzzle:
         self.start = []
         self.goal = []
 
+    def handler(self):
+        self.input()
+        self.algorithm_select()
+
     def input(self):
         print("Input 3x3 Puzzle by Line - seperated by Spaces, and '_' as Blank. EG '5 7 _'")
         print("Start Puzzle")
@@ -20,6 +24,10 @@ class Puzzle:
             print("Enter goal line", i + 1)
             temp = input().split(' ')
             self.goal.append(temp)
+
+    def algorithm_select(self):
+        # TODO add selection method via command line - then run call appropriate solver
+
 
 
 
@@ -36,6 +44,6 @@ class Node:
 
 
 p = Puzzle(3)
-p.input()
+p.handler()
 
 print(p.start, "\n", p.goal)
