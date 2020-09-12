@@ -1,4 +1,5 @@
-
+import sys
+from solver import Solver
 
 class Puzzle:
     def __init__(self, size):
@@ -7,10 +8,12 @@ class Puzzle:
         self.closed = []
         self.start = []
         self.goal = []
+        self.algorithm = None
 
     def handler(self):
         self.input()
         self.algorithm_select()
+        self.launcher()
 
     def input(self):
         print("Input 3x3 Puzzle by Line - seperated by Spaces, and '_' as Blank. EG '5 7 _'")
@@ -26,25 +29,18 @@ class Puzzle:
             self.goal.append(temp)
 
     def algorithm_select(self):
-        # TODO add selection method via command line - then run call appropriate solver
-        print("dicks")
+        print("Select a Solving Algorithm (Input Number)\n1. Breadth First Search\n2. Gready Best First\n3. A* Misplaced Tiles\n4. A* Manhatten Distance")
+        self.algorithm = int(input())
 
-
-
-
-class Node:
-    def __init__(self,data,level,fval):
-        self.data = data
-        self.level = level
-        self.fval = fval
-
-
-
-
-
-
-
-p = Puzzle(3)
-p.handler()
-
-print(p.start, "\n", p.goal)
+    def launcher(self):
+        if (self.algorithm != None):
+            if (self.algorithm == 1):
+                self.algorithm
+            if (self.algorithm == 2):
+                self.algorithm
+            if (self.algorithm == 3):
+                self.algorithm
+            if (self.algorithm == 4):
+                self.algorithm
+        else: 
+            quit()
