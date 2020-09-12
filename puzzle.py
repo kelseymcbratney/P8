@@ -27,6 +27,7 @@ class Puzzle:
 
     def algorithm_select(self):
         # TODO add selection method via command line - then run call appropriate solver
+        print("dicks")
 
 
 
