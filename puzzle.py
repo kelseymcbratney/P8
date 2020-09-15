@@ -4,8 +4,6 @@ from solver import Solver
 class Puzzle:
     def __init__(self, size):
         self.size = size
-        self.open = []
-        self.closed = []
         self.start = []
         self.goal = []
         self.algorithm = None
@@ -33,14 +31,15 @@ class Puzzle:
         self.algorithm = int(input())
 
     def launcher(self):
+        s = Solver(self.start, self.goal, self)
         if (self.algorithm != None):
             if (self.algorithm == 1):
-                self.algorithm
+                s.breadth()
             if (self.algorithm == 2):
-                self.algorithm
+                s.gready()
             if (self.algorithm == 3):
-                self.algorithm
+                s.atile()
             if (self.algorithm == 4):
-                self.algorithm
+                s.amanhattan()
         else: 
             quit()

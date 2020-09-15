@@ -1,21 +1,28 @@
+from queue import Queue
+
 class Solver:
-    def __init__(self, start, goal, h, f ,g):
+    def __init__(self, start, goal, puzzle):
         self.start = start
         self.goal = goal
-        self.h = h
-        self.f = f
-        self.g = g
+        self.f = None
+        self.g = None
+        self.h = None
+        self.puzzle = puzzle
 
     def breadth(self):
-        print('f')
+        pass
 
     def gready(self):
-        print('f')
+        pass
 
     def atile(self):
-        print('f')
+        pass
 
     def amanhattan(self):
-        print('f')
+        pass
+
+    def calc_h(self):
+        pass
+        #insert method to calculate the differences between the start and goal node
 
 
