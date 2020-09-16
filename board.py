@@ -17,6 +17,25 @@ class Board:
            self.parity = "odd"
         self.make_graph()
         self.__calc_parity()
+
+    def move(self, direction):
+        """
+            Will move the blank based on the input of the string
+            Valid inputs:
+            "up"
+            "down"
+            "left"
+            "right"
+        """
+        temp = self.blank.value
+        blankPos = self.blank.position
+        tilePos = getattr(self.blank, direction).position
+        self.blank.val = getattr(self.blank, direction).val
+        getattr(self.blank, direction).val = temp
+        self.blank = getattr(self.blank, direction)
+        temp = self.values[blankPos]
+        self.values[blankPos] = self.values[tilePos]
+        self.values[tilePos] = temp
     
     def __calc_parity(self):
         inversions = 0
@@ -28,6 +47,10 @@ class Board:
                     continue
                 if self.values[x] > self.values[y]:
                     inversions += 1
+        if self.__is_even(inversions):
+           self.parity = "even"
+        else:
+           self.parity = "odd"
         return inversions
                     
 
@@ -37,25 +60,25 @@ class Board:
             values that were given at initializaton.
             Building happens from left to right top to bottom
         """
-        tile1 = self.__create_tile(self.values[0])
-        tile2 = self.__create_tile(self.values[1], None, None, tile1)
+        tile1 = self.__create_tile(self.values[0], 0)
+        tile2 = self.__create_tile(self.values[1], 1, None, None, tile1)
         tile1.right = tile2 
-        tile3 = self.__create_tile(self.values[2], None, None, tile2)
+        tile3 = self.__create_tile(self.values[2], 2, None, None, tile2)
         tile2.right = tile3
-        tile4 = self.__create_tile(self.values[3], tile1)
+        tile4 = self.__create_tile(self.values[3], 3, tile1)
         tile1.down = tile4
-        tile5 = self.__create_tile(self.values[4], tile2, None, tile4)
+        tile5 = self.__create_tile(self.values[4], 4, tile2, None, tile4)
         tile4.right = tile5
         tile2.down = tile5
-        tile6 = self.__create_tile(self.values[5], tile3, None, tile5)
+        tile6 = self.__create_tile(self.values[5], 5, tile3, None, tile5)
         tile3.down = tile6
         tile5.right = tile6
-        tile7 = self.__create_tile(self.values[6], tile4)
+        tile7 = self.__create_tile(self.values[6], 6, tile4)
         tile4.down = tile7
-        tile8 = self.__create_tile(self.values[7], tile5, None, tile7)
+        tile8 = self.__create_tile(self.values[7], 7, tile5, None, tile7)
         tile5.down = tile8
         tile7.right = tile8
-        tile9 = self.__create_tile(self.values[8], tile6, None, tile8)
+        tile9 = self.__create_tile(self.values[8], 8, tile6, None, tile8)
         tile6.down = tile9
         tile8.right = tile9
 
@@ -82,3 +105,4 @@ class Board:
             return True
         else:
             return False
+

@@ -1,5 +1,6 @@
 import sys
 from solver import Solver
+from board import Board
 
 class Puzzle:
     def __init__(self, size):
@@ -19,12 +20,12 @@ class Puzzle:
         for i in range(0, self.size):
             print("Enter start line", i + 1)
             temp = input().split(' ')
-            self.start.append(temp)
+            self.start = self.start + temp
         print("Goal Puzzle")
         for i in range(0, self.size):
             print("Enter goal line", i + 1)
             temp = input().split(' ')
-            self.goal.append(temp)
+            self.goal = self.goal + temp
 
     def algorithm_select(self):
         print("Select a Solving Algorithm (Input Number)\n1. Breadth First Search\n2. Gready Best First\n3. A* Misplaced Tiles\n4. A* Manhatten Distance")
