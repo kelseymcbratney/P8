@@ -40,4 +40,3 @@ class Queue:
         self.head = old_head.next
         return old_head
     
-    

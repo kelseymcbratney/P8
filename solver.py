@@ -9,7 +9,7 @@ class Solver:
         self.h = None
         self.puzzle = puzzle
 
-    def breadth(self):
+    def breadth(self, start):
         pass
 
     def gready(self):
