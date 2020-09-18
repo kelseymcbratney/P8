@@ -5,6 +5,10 @@ class Node:
         self.fval = fval
         self.parent = parent
         self.next = next
+        self.f = None
+        self.g = None
+        self.h = None
+        self.priority = None
 
     def set_parent(self, parent):
         self.parent = parent
@@ -23,3 +27,20 @@ class Node:
 
     def get_data(self):
         return self.data
+
+    def set_priority(self, p):
+        self.priority = p
+
+    def get_priority(self):
+        return self.priority
+
+    def set_f(self, g, h):
+        self.f = g + h
+        self.g = g
+        self.h = h
+
+    def get_f(self):
+        return self.f
+
+
+    

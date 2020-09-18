@@ -15,6 +15,11 @@ class Puzzle:
         self.launcher()
 
     def input(self):
+        # self.goal = [1, 2, 3, 4, '_', 5, 6, 7, 8]
+        # self.start = ['_', 1, 3, 4, 2, 5, 6 , 7, 8]
+        """
+        Below is functioning code for manual entry. Set above to fixed entry for testing
+        """
         print("Input 3x3 Puzzle by Line - seperated by Spaces, and '_' as Blank. EG '5 7 _'")
         print("Start Puzzle")
         for i in range(0, self.size):
@@ -32,7 +37,9 @@ class Puzzle:
         self.algorithm = int(input())
 
     def launcher(self):
-        s = Solver(self.start, self.goal, self)
+        start = Board(self.start)
+        s = Solver(start, self.goal)
+
         if (self.algorithm != None):
             if (self.algorithm == 1):
                 s.breadth()

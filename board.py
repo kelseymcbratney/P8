@@ -11,12 +11,19 @@ class Board:
         self.values = values
         self.parity_val = self.__calc_parity()
         self.parity = None
+        self.first = None
         if self.__is_even(self.parity_val):
            self.parity = "even"
         else:
            self.parity = "odd"
         self.make_graph()
         self.__calc_parity()
+
+    def print_board(self):
+        print("")
+        print(self.values[:3])
+        print(self.values[3:6])
+        print(self.values[6:])
 
     def move(self, direction):
         """
@@ -27,7 +34,7 @@ class Board:
             "left"
             "right"
         """
-        temp = self.blank.value
+        temp = self.blank.val
         blankPos = self.blank.position
         tilePos = getattr(self.blank, direction).position
         self.blank.val = getattr(self.blank, direction).val
